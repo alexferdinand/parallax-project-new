@@ -47,10 +47,8 @@
   },
 
   methods: {
-            someMethod() {
-                //this.position;
-            },
-        }
+ 
+        },
     }
 
 </script>

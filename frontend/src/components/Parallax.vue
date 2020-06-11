@@ -1,6 +1,6 @@
 <template>
   <main class="parallax-container" id = "parallax-container" >
-    <TagLayer :transmittedWidth="parallaxLayerFullWidth" :offsetParallax="offsetParallax" :order="2" />
+    <TagLayer :order="2" />
     <ParallaxLayer :order="2" :startDate="2010" :endDate="2028" :step="1" :ratio="1.0" :subscript="year"/>
     <ParallaxLayer :order="1" :startDate="2010" :endDate="2028" :step="1" :ratio="1.0" :subscript="year"/>
 <!-- <editor/> -->
