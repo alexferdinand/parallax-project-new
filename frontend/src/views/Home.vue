@@ -39,6 +39,8 @@ export default {
 <style lang="scss">
 
     .main-container {
+        position: relative;
+        z-index: 1;
         height: 100%;
         width: 100%;
         display: block;

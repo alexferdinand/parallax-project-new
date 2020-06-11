@@ -1,5 +1,5 @@
 <template>
-<div class="parallax_container_level-2 layer_order" :style="{width: transmittedWidth, left: 0.6* offsetParallax + 'px'}">
+<div class="parallax_container_level-2 tag_layer" :style="{width: TagLayerFullWidth, left:  scrollTagLayerPosition + 'px'}">
    <tag 
              :scaleId="1235"
             :version="1.0"
@@ -29,22 +29,37 @@
        }
         },
 
+  computed: {
+    TagLayerFullWidth: function () {
+      return  this.$store.state.scaleLength + 100 + 'px'
+    },
+
+    scrollTagLayerPosition() {
+       return this.$store.state.scrollerOffset*(1/this.order)
+     },
+     
+  //   classObject: function () {
+  //     return {
+  //     [`parallax_container_level-${this.order}`]: true,
+  //     [`parallax-layer-${this.order}`]: true
+  //     }
+  // }
+  },
+
   methods: {
-            someMethod() {
-                //this.position;
-            },
-        }
+ 
+        },
     }
 
 </script>
 <style >
-/* 
-.layer_order {
+.tag_layer {
   z-index: 10;
   display: flex;
   align-items: flex-end;
-  position: relative;
-} */
+  height: 30%;
+}
+
 
 </style>
 
