@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="scaleTransform" :style="{transform: 'scale('+ this.scaleValue +')'}">
     <svg :width="xEnd+50" height="50%">
       <line :x1="x0" y1="80" :x2="xEnd" y2="80" style="stroke:rgb(0,0,0); stroke-width:2" />
 
@@ -41,18 +41,26 @@ export default {
       xEnd: 0,
       marksArr: [],
       signsArr: [],
-      scaleLength: 0
+      scaleLength: 0,
+      scaleValue: 1
     };
   },
 
   created() {
     this.calculateScale();
+    this.scaleValueCalc()
     this.$store.commit('setScaleLength', this.scaleLength);
   },
 
-  mounted() {},
+  mounted() {
+
+  },
 
   methods: {
+    scaleValueCalc() {
+      this.scaleValue = this.scaleValue*(1/this.order)
+    },
+
     calculateScale() {
       //console.log("0)", this.wpx, " px"); // смотрим ширину экрана
       this.wpx = Math.floor(this.wpx / 100) * 100; // округление до сотен в меньшую сторону
@@ -127,4 +135,7 @@ export default {
 </script>
 
 <style scoped>
+.scaleTransform {
+  transform-origin: left;
+}
 </style>

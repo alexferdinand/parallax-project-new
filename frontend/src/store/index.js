@@ -6,7 +6,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     imgSource: '',
-    wheelOffsetValue: 10,
+    wheelOffsetValue: 50,
     wheelScrollOffset: 0,
     scaleLength: 0,
     scrollerOffset: 0,
