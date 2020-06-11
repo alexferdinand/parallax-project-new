@@ -42,33 +42,12 @@ export default {
       return  this.$store.state.scaleLength + 100 + 'px'
     },
     scrollParallaxLayerPosition() {
-      return this.$store.state.parallaxScrollPosition
-    },
-
-    scrollParallax2Layer() {
-      return this.controlOfLeftPosition(this.$store.state.parallaxScrollPosition)
-    },
-
+       return this.$store.state.scrollerOffset
+     },
   },
 
   methods: {
-    // controlOfEdgePosition(position) {
-    //   if(this.$store.state.parallaxScrollPosition)
-      
-    // },
 
-    // controlOfLeftPosition(position) {
-    //   console.log(window.screen.availWidth)
-    //   return position >= 0 ?  0 : position
-    // },
-
-    getScrollLength(length) {
-      this.scaleLength = length + 100
-    },
-
-    //  wheelScrollingOffset(event) {
-    //    this.$root.$emit('wheelScroll', event.deltaY)
-    // },
     }
 }
 </script>
@@ -76,7 +55,6 @@ export default {
 <style lang="scss">
 .parallax-container {
   min-width: 100%;
-
 }
 
 .parallax-layer {
@@ -97,8 +75,6 @@ export default {
   left:0;
   top:40%;
 }
-
-
 
 .parallax-layer-2 {
   background-image: url("../images/skale.svg");

@@ -13,35 +13,29 @@ export default {
 
   data() {
     return {
-      scrollDummyWidth: 0,
       offsetParallax: 0,
+      scrollDummyWidth: 0,
       }
   },
 
   methods: {
     dummyOffset() {
-      this.$emit(
-        "offsetX",
+      this.$store.commit(
+        "setScrollerOffset",
         this.$refs.scrollDummy.getBoundingClientRect().left
-      );
-    }
-  },
-
-   mounted() {
-      this.scrollDummyWidth = this.$store.state.scaleLength + 100
-      console.log(this.onWheelScrolling)
-      document.getElementById('scroll-container').scrollBy({ left: this.onWheelScrolling, top: 0, behavior: "smooth" });
+      )
     },
-
-
-    computed: {
-      onWheelScrolling() {
-        // console.log(document.getElementById('scroll-container'))
-         return this.$store.state.wheelScrollDirection*10
-      },
   },
 
-};
+  mounted() {
+     this.$root.$on('wheelScrolling', function (delta) {
+     document.getElementById('scroll-container').scrollBy({ left: delta, top: 0, behavior: "auto" });
+    })
+    this.scrollDummyWidth = this.$store.state.scaleLength + 100;
+    },
+  
+  }
+
 </script>
 
 <style scoped>
@@ -49,7 +43,7 @@ export default {
   position: fixed;
   bottom: 0px;
   left: 0px;
-  z-index: 100;
+  z-index: 0;
   height: 3%;
   width: 100%;
   overflow: auto;

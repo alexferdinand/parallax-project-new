@@ -1,26 +1,55 @@
 <template>
-<div id="app" @wheel.prevent="wheelScrolling">
+<div id="app" @wheel.prevent="wheelScrolling" @keydown.shift.left.prevent="keyHandler" @keydown.shift.right.prevent="keyHandler" tabindex="0" v-focus>
     <router-view/>
-    <scroller :scrollDummyWidth="scaleLength"  v-on:offsetX = "scrollParallax" />
+    <scroller />
 </div>
 </template>
 
 
 <script lang="js">
-
+ import Scroller from '@/components/Scroller'
 
 export default {
   name: "App",
+  components: {
+    Scroller,
+  },
 
-  computed: {
-
+  data () {
+      return {
+          offsetValue: this.$store.state.wheelOffsetValue,
+          scrollDelta: this.$store.state.wheelOffsetValue
+      }
   },
 
   methods: {
     wheelScrolling(event) {
-          this.$store.commit('wheelScrollingDetect', event.deltaY)
+        console.log(this.deltaValue(event.deltaY))
+          this.$root.$emit('wheelScrolling', this.deltaValue(event.deltaY))
       },
-  }
+
+    deltaValue(delta) {
+        return delta < 0 ? -this.offsetValue : this.offsetValue;
+    },
+
+    keyHandler(event) {
+                if (event.repeat) {
+                    this.scrollDelta += 5;
+                } else
+                {
+                    this.scrollDelta = this.$store.state.wheelOffsetValue
+                }
+                this.$root.$emit('wheelScrolling', this.deltaValue(event.key === "ArrowRight" ? this.scrollDelta : -this.scrollDelta))
+            },
+  },
+
+  directives: {
+            focus: {
+                inserted(el) {
+                    el.focus()
+                }
+            }
+        }
 
 }
 </script>
