@@ -1,7 +1,8 @@
 <template>
-    <div id="app" @wheel.passive="wheelScrolling">
-            <router-view/>
-    </div>
+<div id="app" @wheel.prevent="wheelScrolling">
+    <router-view/>
+    <scroller :scrollDummyWidth="scaleLength"  v-on:offsetX = "scrollParallax" />
+</div>
 </template>
 
 

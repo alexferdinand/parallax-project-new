@@ -14,7 +14,7 @@ export default new Vuex.Store({
   mutations: {
     wheelScrollingDetect(state, payload) 
     {
-      let offset = 50;
+      let offset = 20;
       state.wheelScrollDirection = payload < 0 ? -offset : offset;
       //console.log(state.parallaxScrollPosition, state.wheelScrollDirection)
       let leftPosition = 0;
@@ -28,7 +28,6 @@ export default new Vuex.Store({
 
     setScaleLength(state, scaleWidth) {
       state.scaleLength =  scaleWidth
-     
     },
   },
 
