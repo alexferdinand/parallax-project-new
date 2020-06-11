@@ -1,10 +1,11 @@
 <template>
-    <div class="parallax-layer parallax-layer-2 parallax_container_level-2" :style="{width: parallaxLayerFullWidth, left: scrollParallaxLayerPosition + 'px'}" >
+    <div class="parallax-layer" v-bind:class="classObject" :style="{width: parallaxLayerFullWidth, left: scrollParallaxLayerPosition + 'px'}" >
      <scale
         :startDate=startDate
         :endDate=endDate
         :step=step
         :ratio=ratio
+        :order=order
       />
     </div>
 </template>
@@ -18,6 +19,7 @@ export default {
     components: {
     Scale,
   },
+
   props: {
    order: {type: Number, required: true},
    step: {type: Number, default: 1, required: false},
@@ -29,39 +31,44 @@ export default {
 
   data() {
     return {
-      scaleLength: 0,
-      offsetParallax: 0,
       }
   },
   
   created() {
     //this.getData()
   },
+
   computed: {
     parallaxLayerFullWidth: function () {
       return  this.$store.state.scaleLength + 100 + 'px'
     },
+
     scrollParallaxLayerPosition() {
-       return this.$store.state.scrollerOffset
+       return this.$store.state.scrollerOffset*(1/this.order)
      },
+     
+    classObject: function () {
+      return {
+      [`parallax_container_level-${this.order}`]: true,
+      [`parallax-layer-${this.order}`]: true
+      }
+  }
   },
 
   methods: {
 
-    }
+
+    },
 }
 </script>
 
 <style lang="scss">
-.parallax-container {
-  min-width: 100%;
-}
-
 .parallax-layer {
   height: 30%;
   min-width: 100%;
   display: flex;
   align-items: flex-end;
+  justify-items: center;
 }
 
 .parallax_container_level-1 {
