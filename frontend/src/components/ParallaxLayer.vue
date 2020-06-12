@@ -35,20 +35,15 @@
             return {}
         },
         created() {
-           async function attempt () {
-                axios
-                    .get('/scale/5eb80bee7c213e5d2fa7d46a')
-                    // .then(response => (this.info = response))
-                    // .then(response => (console.log(response)))
-                    .then((response) => {
-                        this.startDate = response.data.startDate;
-                        console.log(this.startDate);
-                    })
-                    .catch(error => console.log('error:' + error));
-
-           }
-            attempt();
-            console.log("1: " + this.startDate);
+            // axios
+            //     .get('/scale/5eb80bee7c213e5d2fa7d46a')
+            //     .then((response) => {
+            //         this.startDate = response.data.startDate;
+            //         console.log(this.startDate);
+            //     })
+            //     .catch(error => console.log('error:' + error));
+            this.getData();
+            console.log(this.startDate);
 
         },
         computed: {
@@ -69,8 +64,18 @@
 
         },
 
-        methods: {},
+        methods: {
+            async getData() {
+                await axios.get('/scale/5eb80bee7c213e5d2fa7d46a')
+                    .then((response) => {
+                        this.startDate = response.data.startDate;
+                        console.log(this.startDate);
+                    })
+                    .catch(error => console.log('error:' + error))
+            }
+        }
     }
+
 </script>
 
 <style lang="scss">
