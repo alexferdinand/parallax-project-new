@@ -1,5 +1,5 @@
 <template>
-<div class="parallax_container_level-2 tag_layer" :style="{width: TagLayerFullWidth, left:  scrollTagLayerPosition + 'px'}">
+<div class="tag_layer" :class="classObject" :style="{width: TagLayerFullWidth, left:  scrollTagLayerPosition + 'px'}">
    <tag 
              :scaleId="1235"
             :version="1.0"
@@ -18,7 +18,6 @@
   },
   props: {
    version: Number,
-   transmittedWidth: String,
    offsetParallax: Number,
    order: Number
         },
@@ -38,12 +37,11 @@
        return this.$store.state.scrollerOffset*(1/this.order)
      },
      
-  //   classObject: function () {
-  //     return {
-  //     [`parallax_container_level-${this.order}`]: true,
-  //     [`parallax-layer-${this.order}`]: true
-  //     }
-  // }
+    classObject: function () {
+      return {
+      [`parallax_container_level-${this.order}`]: true,
+      }
+  }
   },
 
   methods: {
