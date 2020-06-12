@@ -25,6 +25,8 @@
 </template>
 
 <script>
+  import axios from 'axios';
+
 export default {
   name: "Scale",
   props: {
@@ -46,14 +48,23 @@ export default {
     };
   },
 
-  created() {
+   beforeCreate() {
+        axios
+            .get('/scale/5eb80bee7c213e5d2fa7d46a')
+            .then(response => (this.info = response))
+            // .then(response => (console.log(response)))
+            .then(response => (console.log(response.data.startDate, response.data.endDate)))
+            .catch(error => console.log('error:' + error));
+
+
+
+
+
+    },
+    created() {
     this.calculateScale();
-    this.scaleValueCalc()
+    this.scaleValueCalc();
     this.$store.commit('setScaleLength', this.scaleLength);
-  },
-
-  mounted() {
-
   },
 
   methods: {
