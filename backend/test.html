@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.2.0/mocha.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.2.0/mocha.js"></script>
+    <script>
+        mocha.setup('bdd');
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/3.5.0/chai.js"></script>
+    <script>
+        let assert = chai.assert;
+    </script>
+</head>
+<body>
+
+<script>
+    function getPageById(req, res) {
+        Page.findById(req.params.pageID,(err, page) => res.json(err || page));
+    }
+    function getId(id) {
+        return id;
+    }
+</script>
+
+<script>
+    describe("getPageById", function () {
+        it("извлекает страницу с соответствующим id из базы данных и" +
+            "отправляет на фронт", function () {
+            assert.equal(getPageById(123256475997), 123256475997);
+        });
+
+    });
+    describe("getId", function () {
+        it("выводит id", function () {
+            assert.equal(getId(123256475997), 123256475997);
+        });
+
+    });
+</script>
+<div id="mocha"></div>
+<script>
+    mocha.run();
+</script>
+</body>
+
+</html>
+
+

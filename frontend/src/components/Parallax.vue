@@ -9,8 +9,11 @@
 
 
 <script lang="js">
+
+
   import ParallaxLayer from '@/components/ParallaxLayer'
   import TagLayer from '@/components/TagLayer'
+
   //import Editor from '@/components/Editor'
   
 export default {
@@ -27,9 +30,6 @@ export default {
       offsetParallax: 0,
       tagsData: null
       }
-  },
-  created() {
-    //this.getData()
   },
   computed: {
 
