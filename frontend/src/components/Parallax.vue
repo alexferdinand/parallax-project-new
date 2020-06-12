@@ -1,9 +1,9 @@
 <template>
   <main class="parallax-container" id = "parallax-container" >
-    <TagLayer :order="2" />
-    <ParallaxLayer :order="2" :startDate="2010" :endDate="2028" :step="1" :ratio="1.0" :subscript="year"/>
-    <ParallaxLayer :order="1" :startDate="2010" :endDate="2028" :step="1" :ratio="1.0" :subscript="year"/>
-<!-- <editor/> -->
+    <TagLayer :order="1" />
+    <ParallaxLayer :order="2" :startDate="10" :endDate="28" :step="1" :ratio="1.0" :subscript="year"/>
+    <ParallaxLayer :order="1" :startDate="10" :endDate="28" :step="1" :ratio="1.0" :subscript="year"/>
+   <editor/> 
   </main>
 </template>
 
@@ -11,14 +11,14 @@
 <script lang="js">
   import ParallaxLayer from '@/components/ParallaxLayer'
   import TagLayer from '@/components/TagLayer'
-  //import Editor from '@/components/Editor'
+  import Editor from '@/components/Editor'
   
 export default {
   name: "Parallax",
     components: {
     ParallaxLayer,
     TagLayer,
-    //Editor
+    Editor
   },
   data() {
     return {
