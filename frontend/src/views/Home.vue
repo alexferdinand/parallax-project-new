@@ -4,9 +4,6 @@
 
 <script>
 // import axios from 'axios'
-// import Scale from '@/components/Scale'
-// import Scroller from '@/components/Scroller'
-// import Tag from '@/components/Tag'
  import Parallax from '@/components/Parallax';
 
 export default {

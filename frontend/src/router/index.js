@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import Editor from '../views/Editor.vue'
 
 Vue.use(VueRouter)
 
@@ -9,7 +10,12 @@ Vue.use(VueRouter)
     path: '/',
     name: 'Home',
     component: Home
-  },
+    },
+  {
+    path: '/edit',
+    name: 'Editor',
+    component: Editor
+    },
 ]
 
 const router = new VueRouter({
