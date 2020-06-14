@@ -14,7 +14,7 @@
  import Parallax from '@/components/Parallax';
 
 export default {
-  name: "Home",
+  name: "Editor",
   components: {
     Parallax
   },

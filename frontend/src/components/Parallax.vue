@@ -25,7 +25,9 @@ export default {
       scale: {},
       scaleLength: 0,
       offsetParallax: 0,
-      tagsData: null
+      tagsData: null,
+      startDate: 2141,
+      endDate: 4228
       }
   },
   created() {
