@@ -94,7 +94,7 @@ export default {
         newStep = decade
       }
 
-      newStep = 1000      
+      newStep = 100      
       console.log("2.0) Масштаб 1 /", newStep); // выводим масштаб
 
       let markQnt = (this.endDate - this.startDate) / newStep

@@ -5,6 +5,7 @@
                     Увлекательная история моих приключений
                 </h1>
             </header>
+             <editor/>
         <parallax/>
         </div>
 </template>
@@ -12,11 +13,13 @@
 <script>
 // import axios from 'axios'
  import Parallax from '@/components/Parallax';
+ import Editor from '@/components/Editor';
 
 export default {
-  name: "Editor",
+  name: "Edit",
   components: {
-    Parallax
+    Parallax, 
+    Editor
   },
 
   data() {

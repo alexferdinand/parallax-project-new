@@ -4,6 +4,7 @@
                 <h1>
                     Увлекательная история моих приключений
                 </h1>
+               <router-link to="/edit">Go to Edit</router-link>
             </header>
         <parallax/>
         </div>
