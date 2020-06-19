@@ -34,15 +34,8 @@
         data() {
             return {}
         },
-        created() {
-            // axios
-            //     .get('/scale/5eb80bee7c213e5d2fa7d46a')
-            //     .then((response) => {
-            //         this.startDate = response.data.startDate;
-            //         console.log(this.startDate);
-            //     })
-            //     .catch(error => console.log('error:' + error));
-            this.getData();
+        async created() {
+            this.startDate= await this.getData();
             console.log(this.startDate);
 
         },
@@ -71,7 +64,8 @@
                         this.startDate = response.data.startDate;
                         console.log(this.startDate);
                     })
-                    .catch(error => console.log('error:' + error))
+                    .catch(error => console.log('error:' + error));
+                return this.startDate
             }
         }
     }
