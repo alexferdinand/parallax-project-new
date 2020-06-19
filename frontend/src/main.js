@@ -4,7 +4,9 @@ import router from './router'
 import store from './store'
 import KeenUI from 'keen-ui'
 import 'keen-ui/dist/keen-ui.css'
-
+import VueDragDrop from 'vue-drag-drop';
+ 
+Vue.use(VueDragDrop);
 Vue.use(KeenUI);
 
 Vue.config.productionTip = false

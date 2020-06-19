@@ -4,20 +4,24 @@
                 <h1>
                     Увлекательная история моих приключений
                 </h1>
-               <router-link to="/edit">Go to Edit</router-link>
             </header>
+             <editor/>
         <parallax/>
         </div>
 </template>
 
 <script>
-// import axios from 'axios'
+//import axios from 'axios'
  import Parallax from '@/components/Parallax';
+ import Editor from '@/components/Editor';
+ //import Drag from 'vue-drag-drop';
 
 export default {
-  name: "Home",
+  name: "Edit",
   components: {
-    Parallax
+    Parallax, 
+    Editor,
+    //Drag,
   },
 
   data() {
@@ -28,6 +32,10 @@ export default {
       tagsData: null
     };
   },
+
+  methods: {
+
+  }
 
 }
 
@@ -59,5 +67,7 @@ export default {
         left: 0;
         height: 40%;
         width: 100%;
+        z-index:5;
     }
+
 </style>
