@@ -2,8 +2,8 @@
   <main class="parallax-container" id = "parallax-container" >
     <TagLayer :order="1" />
     <ParallaxLayer :order="2" :startDate="1050" :endDate="2028" :step="1" :ratio="1.0" :subscript="year"/>
-    <ParallaxLayer :order="1" :startDate="1050" :endDate="2028" :step="1" :ratio="1.0" :subscript="year"/> 
-    <!-- <editor/> -->
+    <ParallaxLayer :order="1" :startDate="1050" :endDate="2028" :step="1" :ratio="1.0" :subscript="year"/>
+    
   </main>
 </template>
 
@@ -11,14 +11,13 @@
 <script lang="js">
   import ParallaxLayer from '@/components/ParallaxLayer'
   import TagLayer from '@/components/TagLayer'
-  //import Editor from '@/components/Editor';
+
   
 export default {
   name: "Parallax",
     components: {
     ParallaxLayer,
     TagLayer,
-    //Editor
   },
   data() {
     return {
@@ -45,6 +44,13 @@ export default {
     getScrollLength(length) {
       this.scaleLength = length + 100
     },
+
+    handleDrop(data) {
+				alert(`You dropped with data: ${JSON.stringify(data)}`);
+      },
+          coordCons(data, nativeEvent) {
+        console.log(nativeEvent)
+      },
 
     }
 }

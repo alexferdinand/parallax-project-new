@@ -49,7 +49,8 @@ export default {
       marksArr: [],
       signsArr: [],
       signString: '',
-      scaleLength: 0
+      scaleLength: 0,
+      scaleValue: 1,
     };
   },
 

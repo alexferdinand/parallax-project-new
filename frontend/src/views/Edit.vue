@@ -11,15 +11,17 @@
 </template>
 
 <script>
-// import axios from 'axios'
+//import axios from 'axios'
  import Parallax from '@/components/Parallax';
  import Editor from '@/components/Editor';
+ //import Drag from 'vue-drag-drop';
 
 export default {
   name: "Edit",
   components: {
     Parallax, 
-    Editor
+    Editor,
+    //Drag,
   },
 
   data() {
@@ -30,6 +32,10 @@ export default {
       tagsData: null
     };
   },
+
+  methods: {
+
+  }
 
 }
 
@@ -61,5 +67,7 @@ export default {
         left: 0;
         height: 40%;
         width: 100%;
+        z-index:5;
     }
+
 </style>
