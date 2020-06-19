@@ -1,8 +1,8 @@
 <template>
   <main class="parallax-container" id = "parallax-container" >
     <TagLayer :order="2" />
-    <ParallaxLayer :order="2" :startDate="2010" :endDate="2028" :step="1" :ratio="1.0" :subscript="year"/>
-    <ParallaxLayer :order="1" :startDate="2010" :endDate="2028" :step="1" :ratio="1.0" :subscript="year"/>
+    <ParallaxLayer :order="2" :startDate=startDate :endDate="2028" :step="1" :ratio="1.0" :subscript="year"/>
+    <ParallaxLayer :order="1" :startDate=startDate :endDate="2028" :step="1" :ratio="1.0" :subscript="year"/>
 <!-- <editor/> -->
   </main>
 </template>
@@ -13,6 +13,7 @@
 
   import ParallaxLayer from '@/components/ParallaxLayer'
   import TagLayer from '@/components/TagLayer'
+  import axios from 'axios'
 
   //import Editor from '@/components/Editor'
   
@@ -28,14 +29,29 @@ export default {
       scale: {},
       scaleLength: 0,
       offsetParallax: 0,
+      startDate: null,
       tagsData: null
       }
   },
+    async created() {
+        this.startDate= await this.getData();
+        console.log(this.startDate);
+
+    },
   computed: {
 
   },
 
   methods: {
+      async getData() {
+                  await axios.get('/scale/5eb80bee7c213e5d2fa7d46a')
+                      .then((response) => {
+                          this.startDate = response.data.startDate;
+                          console.log(this.startDate);
+                      })
+                      .catch(error => console.log('error:' + error));
+                  return this.startDate
+              },
     controlOfLeftPosition(position) {
       return position >= 0 ?  0 : position
     },

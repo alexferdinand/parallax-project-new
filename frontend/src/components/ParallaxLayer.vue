@@ -13,7 +13,7 @@
 
 
 <script lang="js">
-    import axios from 'axios'
+
     import Scale from '@/components/Scale'
 
     export default {
@@ -34,11 +34,11 @@
         data() {
             return {}
         },
-        async created() {
-            this.startDate= await this.getData();
-            console.log(this.startDate);
-
-        },
+        // async created() {
+        //     this.startDate= await this.getData();
+        //     console.log(this.startDate);
+        //
+        // },
         computed: {
             parallaxLayerFullWidth: function () {
                 return this.$store.state.scaleLength + 100 + 'px'
@@ -57,17 +57,17 @@
 
         },
 
-        methods: {
-            async getData() {
-                await axios.get('/scale/5eb80bee7c213e5d2fa7d46a')
-                    .then((response) => {
-                        this.startDate = response.data.startDate;
-                        console.log(this.startDate);
-                    })
-                    .catch(error => console.log('error:' + error));
-                return this.startDate
-            }
-        }
+        // methods: {
+        //     async getData() {
+        //         await axios.get('/scale/5eb80bee7c213e5d2fa7d46a')
+        //             .then((response) => {
+        //                 this.startDate = response.data.startDate;
+        //                 console.log(this.startDate);
+        //             })
+        //             .catch(error => console.log('error:' + error));
+        //         return this.startDate
+        //     }
+        // }
     }
 
 </script>

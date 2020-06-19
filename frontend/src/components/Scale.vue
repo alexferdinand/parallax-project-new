@@ -1,6 +1,6 @@
 <template>
     <div class="scaleTransform" :style="{transform: 'scale('+ this.scaleValue +')'}">
-        <svg :width="xEnd+50" height="50%">
+        <svg id="svgg" :width="xEnd+50" height="50%">
             <line :x1="x0" y1="80" :x2="xEnd" y2="80" style="stroke:rgb(0,0,0); stroke-width:2"/>
 
             <line
@@ -47,6 +47,13 @@
                 scaleValue: 1
             };
         },
+        watch: {
+                startDate: function (val) {
+                    this.calculateScale();
+                    this.scaleValueCalc();
+                 console.log('update'+ this.startDate);
+                }
+            },
 
         created() {
             this.calculateScale();
@@ -54,13 +61,6 @@
             this.$store.commit('setScaleLength', this.scaleLength);
             console.log(this.startDate);
         },
-        updated() {
-            this.calculateScale();
-            this.scaleValueCalc();
-            this.$store.commit('setScaleLength', this.scaleLength);
-            console.log(this.startDate);
-        },
-
         methods: {
             scaleValueCalc() {
                 this.scaleValue = this.scaleValue * (1 / this.order)
