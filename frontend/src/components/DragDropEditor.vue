@@ -1,13 +1,13 @@
 <template>
-    <div class="parallax-layer" v-bind:class="classObject" :style="{width: parallaxLayerFullWidth, left: scrollParallaxLayerPosition + 'px'}" >
-     <scale
-        :startDate=startDate
-        :endDate=endDate
-        :step=step
-        :ratio=ratio
-        :order=order
-      />
+    <div>
+        <div class="dragElementsContainer">
+             <drag class="drag" @dragover="coordCons"  :transfer-data="{ example: 'minimal' }">Text Tag</drag>
+            <drag class="drag" @dragover="coordCons"  :transfer-data="{ example: 'simple' }">Image Tag</drag>
+        </div>
+        <drop class="drop"  @drop="handleDrop"  @dragover="coordCons" :transfer-data="{ example: 'dfdfdfgf' }"/>
+        <drop class="drop"  @drop="handleDrop"  @dragover="coordCons" :transfer-data="{ example: 'minimal' }"/>
     </div>
+
 </template>
 
 
@@ -15,9 +15,9 @@
   import Scale from '@/components/Scale'
   
 export default {
-  name: "ParallaxLayer",
+  name: "DragDropEditor",
     components: {
-    Scale,
+ 
   },
 
   props: {
@@ -47,16 +47,15 @@ export default {
        return this.$store.state.scrollerOffset*(1/this.order)
      },
      
-    classObject: function () {
-      return {
-      [`parallax_container_level-${this.order}`]: true,
-      [`parallax-layer-${this.order}`]: true
-      }
-  }
   },
 
   methods: {
-
+    handleDrop(data) {
+    alert(`You dropped with data: ${JSON.stringify(data)}`);
+      },
+    coordCons(data, nativeEvent) {
+        console.log(nativeEvent)
+      },
 
     },
 }
@@ -75,4 +74,19 @@ export default {
   opacity: 0.5;
 }
 
+.drag {
+	box-sizing: border-box;
+	display: inline-block;
+	border-radius: 10px;
+	width: 100px;
+	height: 100px;
+	background: #ccc;
+	vertical-align: middle;
+	margin-right: 20px;
+	position: relative;
+	padding: 5px;
+	padding-top: 35px;
+	text-align: center;
+	margin: 3px;
+}
 </style>
