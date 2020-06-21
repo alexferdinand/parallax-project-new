@@ -51,13 +51,13 @@
 
 </script>
 <style >
+
 .tag_layer {
   z-index: 10;
   display: flex;
   align-items: flex-end;
   height: 30%;
 }
-
 
 </style>
 

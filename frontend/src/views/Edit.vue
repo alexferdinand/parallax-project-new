@@ -6,22 +6,20 @@
                 </h1>
             </header>
              <editor/>
-        <parallax/>
+        <parallaxEditor/>
         </div>
 </template>
 
 <script>
 //import axios from 'axios'
- import Parallax from '@/components/Parallax';
- import Editor from '@/components/Editor';
- //import Drag from 'vue-drag-drop';
+ import ParallaxEditor from '@/components/editor/ParallaxEditor';
+ import Editor from '@/components/editor/Editor';
 
 export default {
   name: "Edit",
   components: {
-    Parallax, 
+    ParallaxEditor, 
     Editor,
-    //Drag,
   },
 
   data() {
