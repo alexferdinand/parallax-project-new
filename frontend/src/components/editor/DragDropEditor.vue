@@ -1,19 +1,17 @@
 <template>
     <div>
         <div class="dragElementsContainer">
-             <drag class="drag" @dragover="coordCons"  :transfer-data="{ example: 'minimal' }">Text Tag</drag>
-            <drag class="drag" @dragover="coordCons"  :transfer-data="{ example: 'simple' }">Image Tag</drag>
+             <drag class="drag" @dragover="coordCons"  :transfer-data="{ example: 'minimal' }" :tag ='none'>Text Tag</drag>
+            <drag class="drag" @dragover="coordCons"  :transfer-data="{ example: 'simple' }" :tag ='none'>Image Tag</drag>
         </div>
-        <drop class="drop"  @drop="handleDrop"  @dragover="coordCons" :transfer-data="{ example: 'dfdfdfgf' }"/>
-        <drop class="drop"  @drop="handleDrop"  @dragover="coordCons" :transfer-data="{ example: 'minimal' }"/>
+        <drop class="drop"  @drop="handleDrop"  @dragover="coordCons" :transfer-data="{ example: 'dfdfdfgf' }" :tag ='none'/>
+        <drop class="drop"  @drop="handleDrop"  @dragover="coordCons" :transfer-data="{ example: 'minimal' }" :tag ='none'/>
     </div>
-
 </template>
 
 
 <script lang="js">
-  import Scale from '@/components/Scale'
-  
+
 export default {
   name: "DragDropEditor",
     components: {

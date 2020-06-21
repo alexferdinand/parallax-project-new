@@ -15,7 +15,7 @@
   import Scale from '@/components/Scale'
   
 export default {
-  name: "ParallaxLayer",
+  name: "ParallaxLayerEditor",
     components: {
     Scale,
   },

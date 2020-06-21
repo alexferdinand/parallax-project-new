@@ -1,21 +1,21 @@
 <template>
-  <main class="parallax-container">
-    <TagLayer :order="1" />
-    <ParallaxLayer :order="2" :startDate="1050" :endDate="2028" :step="1" :ratio="1.0" :subscript="year"/>
-    <ParallaxLayer :order="1" :startDate="1050" :endDate="2028" :step="1" :ratio="1.0" :subscript="year"/>
+  <main class="parallax-container" id = "parallax-container" >
+    <ParallaxLayerEditor :order="2" :startDate="1050" :endDate="2028" :step="1" :ratio="1.0" :subscript="year"/>
+    <ParallaxLayerEditor :order="1" :startDate="1050" :endDate="2028" :step="1" :ratio="1.0" :subscript="year"/>
+    <DragDropEditor/>
   </main>
 </template>
 
 
 <script lang="js">
-  import ParallaxLayer from '@/components/ParallaxLayer'
-  import TagLayer from '@/components/TagLayer'
+  import ParallaxLayerEditor from '@/components/editor/ParallaxLayerEditor';
+  import DragDropEditor from '@/components/editor/DragDropEditor';
   
 export default {
-  name: "Parallax",
+  name: "ParallaxEditor",
     components: {
-    ParallaxLayer,
-    TagLayer,
+    ParallaxLayerEditor,
+    DragDropEditor
   },
   data() {
     return {
@@ -72,12 +72,12 @@ export default {
 }
 
 .parallax-layer-2 {
-  background-image: url("../images/skale.svg");
+  background-image: url("../../images/skale.svg");
   background-size: cover;
 }
 
 .parallax-layer-1 {
-  background-image: url("../images/skale2.svg");
+  background-image: url("../../images/skale2.svg");
   background-size: cover;
   box-shadow: 0 -20px 20px rgba(0, 0, 0, 0.5);
 }
