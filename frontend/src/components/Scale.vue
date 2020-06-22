@@ -66,7 +66,6 @@ export default {
 
   methods: {
     scaleValueCalc() {
-      //this.scaleValue = this.scaleValue*(1/this.order)
       this.scaleValue = this.scaleValue*this.order + 1.23
     },
 
