@@ -50,7 +50,7 @@ export default {
       signsArr: [],
       signString: '',
       scaleLength: 0,
-      scaleValue: 1,
+      scaleValue: -0.23,
     };
   },
 
@@ -66,7 +66,7 @@ export default {
 
   methods: {
     scaleValueCalc() {
-      this.scaleValue = this.scaleValue*(1/this.order)
+      this.scaleValue = this.scaleValue*this.order + 1.23
     },
 
     calculateScale() {

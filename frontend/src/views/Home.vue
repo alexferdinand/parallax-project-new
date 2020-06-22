@@ -49,7 +49,7 @@ export default {
     .main-container header h1 {
         font-family: 'Poiret One', cursive;
         font-weight: lighter;
-        font-size: 40px;
+        font-size: 3rem;
     }
 
     .main-container header {
