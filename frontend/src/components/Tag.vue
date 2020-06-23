@@ -62,7 +62,7 @@
     .container {
         margin-left: -15px;
         z-index: 6;
-        height: 50%;
+        height: 120px;
         position: absolute;
         left: 996px;
     }
@@ -70,7 +70,8 @@
         width: 120px;
         height: 120px;
         background-image: url("../images/tag.svg");
-        margin-top: calc(-25% - 80px);
+        margin-top: -85px;
+        transform: scale(0.8,0.8);
     }
 
     .tag-flag > h1 {

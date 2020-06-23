@@ -1,102 +1,92 @@
 <template>
-    <main class="parallax-container"  @wheel.passive="wheelScrollingOffset">
-    <TagLayer :transmittedWidth = "scaleFullWidth" :offsetParallax = "offsetParallax" :order = "1"/>
-    <div class="parallax-layer-2 parallax-layer parallax_container_level-2" :style="{width: scaleFullWidth, transform: 'translateX(' + offsetParallax*0.6 + 'px)'}">
-      <scale
-      :startDate="2010"
-      :endDate="2028"
-      :step="1"
-      :ratio="1.0"
-    />
-    </div>
-    <div class="parallax-layer-1 parallax-layer parallax_container_level-1" :style="{width: scaleFullWidth, transform: 'translateX(' + offsetParallax + 'px)'}">
-      <scale
-      v-on:returnScaleLength = "getScrollLength"
-      :startDate="2010"
-      :endDate="2028"
-      :step="1"
-      :ratio="1.0"
-    />
-    </div>
-<scroller :scrollDummyWidth="scaleLength"  v-on:offsetX = "scrollParallax" />
-<editor/>
+  <main class="parallax-container" id = "parallax-container" >
+    <TagLayer :order="2" />
+    <ParallaxLayer :order="2" :startDate=startDate :endDate="2028" :step="1" :ratio="1.0" :subscript="year"/>
+    <ParallaxLayer :order="1" :startDate=startDate :endDate="2028" :step="1" :ratio="1.0" :subscript="year"/>
+<!-- <editor/> -->
   </main>
 </template>
 
 
 <script lang="js">
-  import Scroller from '@/components/Scroller'
-  import TagLayer from '@/components/TagLayer'
-  import Scale from '@/components/Scale'
-  import Editor from '@/components/Editor'
-  
 
+
+  import ParallaxLayer from '@/components/ParallaxLayer'
+  import TagLayer from '@/components/TagLayer'
+  import axios from 'axios'
+
+  //import Editor from '@/components/Editor'
+  
 export default {
   name: "Parallax",
     components: {
-    Scale,
-    Scroller,
+    ParallaxLayer,
     TagLayer,
-    Editor
+    //Editor
   },
-
   data() {
     return {
       scale: {},
-      scaleLength: 35,
+      scaleLength: 0,
       offsetParallax: 0,
-      tagsData: null,
+      startDate: null,
+      tagsData: null
       }
   },
+    async created() {
+        this.startDate= await this.getData();
+        console.log(this.startDate);
 
-  created() {
-    //this.getData()
-  },
-
+    },
   computed: {
-    scaleFullWidth: function () {
-      return  this.scaleLength + 20 + 'px'
-    }
+
   },
 
   methods: {
+      async getData() {
+                  await axios.get('/scale/5eb80bee7c213e5d2fa7d46a')
+                      .then((response) => {
+                          this.startDate = response.data.startDate;
+                          console.log(this.startDate);
+                      })
+                      .catch(error => console.log('error:' + error));
+                  return this.startDate
+              },
+    controlOfLeftPosition(position) {
+      return position >= 0 ?  0 : position
+    },
+
     getScrollLength(length) {
-      this.scaleLength = length
-    },
-
-    scrollParallax(data) {
-      this.offsetParallax = data - 20;
-    },
-
-     wheelScrollingOffset(event) {
-       this.$root.$emit('wheelScroll', event.deltaY)
+      this.scaleLength = length + 100
     },
 
     }
-
 }
 </script>
 
 <style lang="scss">
-   
 .parallax-container {
-    height: 100%;
-    grid-row-start: 2;
-    grid-row-end: 3;
-    grid-column-start: 1;
-    grid-column-end: 2;
-    width: 100vw;
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    grid-template-columns: 100%;
+  min-width: 100%;
 }
 
 .parallax-layer {
-    text-align: center;
-    display: flex;
-    align-items: flex-end;
-    overflow: hidden;
-    z-index: 2;
+  height: 30%;
+  min-width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-items: center;
+}
+
+.parallax_container_level-1 {
+  position: fixed;
+  left:0;
+  top: 70%;
+}
+
+.parallax_container_level-2 {
+  position: fixed;
+  left:0;
+  top:40%;
 }
 
 .parallax-layer-2 {
@@ -104,14 +94,10 @@ export default {
   background-size: cover;
 }
 
-.parallax-layer-2 div {
-  transform: scale(0.6, 0.6);
-  transform-origin: left;
-}
-
 .parallax-layer-1 {
   background-image: url("../images/skale2.svg");
   background-size: cover;
   box-shadow: 0 -20px 20px rgba(0, 0, 0, 0.5);
 }
+
 </style>
