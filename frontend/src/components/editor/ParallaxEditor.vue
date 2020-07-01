@@ -2,7 +2,7 @@
   <main class="parallax-container" id = "parallax-container" >
     <ParallaxLayerEditor :order="2" :startDate="1050" :endDate="2028" :step="1" :ratio="1.0" :subscript="year"/>
     <ParallaxLayerEditor :order="1" :startDate="1050" :endDate="2028" :step="1" :ratio="1.0" :subscript="year"/>
-    <DragDropEditor/>
+    <DragDropEditor :order="order"/>
   </main>
 </template>
 
@@ -24,7 +24,8 @@ export default {
       offsetParallax: 0,
       tagsData: null,
       startDate: 2141,
-      endDate: 4228
+      endDate: 4228,
+      order: [1, 2],
       }
   },
   created() {

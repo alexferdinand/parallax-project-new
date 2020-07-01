@@ -1,34 +1,31 @@
 <template>
     <div>
         <div class="dragElementsContainer">
-            <drag class="drag" @dragover="coordCons" @dragstart="unvisible" ref="dragEl" :effect-allowed="['move']"  :transfer-data="{ example: 'minimal' }" :tag ='none'>Text Tag</drag>
+            <drag class="drag" @dragover="coordCons"  :transfer-data="{ example: 'minimal' }" :tag ='none'>Text Tag</drag>
             <drag class="drag" @dragover="coordCons"  :transfer-data="{ example: 'simple' }" :tag ='none'>Image Tag</drag>
         </div>
-        <drop class="drop drop-layer-1"  @drop="handleDrop"  @dragover="coordCons" :transfer-data="{ example: 'dfdfdfgf' }" :tag ='none' :style="{width: parallaxLayerFullWidth, left: scrollParallaxLayerPosition + 'px'}"/>
-        <drop class="drop drop-layer-2"  @drop="handleDrop"  @dragover="coordCons" :transfer-data="{ example: 'minimal' }" :tag ='none' :style="{width: parallaxLayerFullWidth, left: scrollParallaxLayerPosition + 'px'}"/>
-    </div>
+        <DropElement v-for="(position, index) in order" :key="index"/>
+       </div>
 </template>
 
 
 <script lang="js">
+  import DropElement from '@/components/editor/DropElement';
 
 export default {
   name: "DragDropEditor",
     components: {
- 
+      DropElement,
   },
 
   props: {
-   order: {type: Number, required: true},
-   step: {type: Number, default: 1, required: false},
-   startDate: {type: Number, required: true},
-   endDate: {type: Number, required: true},
+   order: {type: Array, required: true},
    ratio: {type: Number, default: 1.0, required: false},
-   subscript: {type: String, default: 'year', required: false},
         },
 
   data() {
     return {
+
       }
   },
   
@@ -38,50 +35,28 @@ export default {
 
   computed: {
     parallaxLayerFullWidth: function () {
-      return  this.$store.state.scaleLength + 100 + 'px'
+      return  this.$store.state.scaleLength  + 'px'
     },
 
-    scrollParallaxLayerPosition() {
-       return this.$store.state.scrollerOffset*(1/this.order)
+    scrollParallaxLayerPositionOne() {
+       return this.$store.state.scrollerOffset
+     },
+
+    scrollParallaxLayerPositionSecond() {
+       return this.$store.state.scrollerOffset*0.77
      },
      
   },
 
   methods: {
-    handleDrop(data) {
-    alert(`You dropped with data: ${JSON.stringify(data)}`);
-      },
     coordCons(data, nativeEvent) {
         console.log(nativeEvent)
       },
-      // unvisible() {
-      //   console.log(this.$refs)
-      //   this.$refs.dragEl.$el.style.display ="none"
-      // }
-
     },
 }
 </script>
 
 <style lang="scss">
-.drop {
-  position: fixed;
-  box-sizing: border-box;
-  display: inline-block;
-  height: 30vh;
-  z-index: 10;
-  background-color: salmon;
-  opacity: 0.5;
-  left:0;
-}
-
-.drop-layer-1 {
-  top:40%;
-}
-
-.drop-layer-2 {
-  top:70%;
-}
 
 .drag {
 	box-sizing: border-box;

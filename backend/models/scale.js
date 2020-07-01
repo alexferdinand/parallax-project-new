@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const scaleSchema = new Schema({
-    startDate: { type: Number, default: 2010 },
+    startDate: { type: Number },
     endDate: { type: Number, default: 2028},
     step: { type: Number, default: 1},
     ratio: Number,
