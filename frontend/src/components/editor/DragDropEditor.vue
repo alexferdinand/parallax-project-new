@@ -4,7 +4,7 @@
             <drag class="drag" @dragover="coordCons"  :transfer-data="{ example: 'minimal' }" :tag ='none'>Text Tag</drag>
             <drag class="drag" @dragover="coordCons"  :transfer-data="{ example: 'simple' }" :tag ='none'>Image Tag</drag>
         </div>
-        <DropElement v-for="(position, index) in order" :key="index"/>
+        <DropElement v-for="(position, index) in order" :key="index" :order="index"/>
        </div>
 </template>
 
